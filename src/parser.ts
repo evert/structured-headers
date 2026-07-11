@@ -429,6 +429,10 @@ export default class Parser {
       }
     }
 
+    if (inputNumber.length>15) {
+      throw new ParseError(this.pos, 'Exceeded max length for a date value');
+    }
+
     return new Date(parseInt(inputNumber,10)*sign*1000);
 
   }
