@@ -1,7 +1,7 @@
 ChangeLog
 =========
 
-2.0.3 (????-??-??)
+2.0.3 (2026-07-12)
 ------------------
 
 * Fail parsing if date strings are over 15 characters.
