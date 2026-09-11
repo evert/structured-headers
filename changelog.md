@@ -1,6 +1,13 @@
 ChangeLog
 =========
 
+2.1.0 (????-??-??)
+------------------
+
+* Byte Sequences can now be serialized from any `BufferSource` such as
+  a `Uint8Array`, a Node `Buffer` or a `DataView`.
+
+
 2.0.3 (2026-07-12)
 ------------------
 

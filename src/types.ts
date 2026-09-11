@@ -39,6 +39,13 @@ export type Dictionary = Map<string, Item|InnerList>;
  */
 export type DictionaryObject = Record<string, BareItem|Item|InnerList>;
 
-export type BareItem = number | string | Token | ArrayBuffer | Date | boolean | DisplayString;
+/**
+ * A standalone value: the value of an Item, or of a parameter.
+ *
+ * A Byte Sequence may be serialized from any `BufferSource`, so a
+ * `Uint8Array`, a Node `Buffer` or a `DataView` can be passed as-is. Parsing
+ * always returns an `ArrayBuffer`.
+ */
+export type BareItem = number | string | Token | BufferSource | Date | boolean | DisplayString;
 
 export type Item = [BareItem, Parameters];

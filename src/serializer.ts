@@ -99,7 +99,7 @@ export function serializeBareItem(input: BareItem): string {
   if (input instanceof Token) {
     return serializeToken(input);
   }
-  if (input instanceof ArrayBuffer) {
+  if (input instanceof ArrayBuffer || ArrayBuffer.isView(input)) {
     return serializeByteSequence(input);
   }
   if (input instanceof DisplayString) {
@@ -161,7 +161,7 @@ export function serializeBoolean(input: boolean): string {
   return input ? '?1' : '?0';
 }
 
-export function serializeByteSequence(input: ArrayBuffer): string {
+export function serializeByteSequence(input: BufferSource): string {
   return `:${arrayBufferToBase64(input)}:`;
 }
 
