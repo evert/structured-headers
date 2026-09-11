@@ -29,10 +29,14 @@ export function isInnerList(input: Item | InnerList): input is InnerList {
 
 }
 
-export function arrayBufferToBase64(ab: ArrayBuffer): string {
+export function arrayBufferToBase64(input: BufferSource): string {
 
-  // Create a Uint8Array to read the ArrayBuffer as bytes
-  const bytes = new Uint8Array(ab);
+  // Create a Uint8Array to read the bytes. A view may cover only part of a
+  // larger buffer -- Node allocates small Buffers out of a shared pool -- so
+  // it is read through its own offset and length, never its whole buffer.
+  const bytes = ArrayBuffer.isView(input)
+    ? new Uint8Array(input.buffer, input.byteOffset, input.byteLength)
+    : new Uint8Array(input);
   let binary = '';
 
   // Convert each byte to a character

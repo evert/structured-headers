@@ -106,8 +106,10 @@ the second is a `Map` object with parameters.
 The type is roughly:
 
 ```typescript
-// The raw value
-type BareItem = number | string | Token | ArrayBuffer | boolean | Date | DisplayString;
+// The raw value. A Byte Sequence is parsed as an ArrayBuffer, and may be
+// serialized from any BufferSource (an ArrayBuffer, a Uint8Array, a Node
+// Buffer or a DataView).
+type BareItem = number | string | Token | BufferSource | boolean | Date | DisplayString;
 
 // The return type of parseItem
 type Item = [
