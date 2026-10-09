@@ -1,6 +1,14 @@
 ChangeLog
 =========
 
+2.1.1 (????-??-??)
+------------------
+
+* Decimals that round to a whole number, such as `1.0001`, now serialize as
+  `1.0` instead of `1.`, which is invalid and was rejected by the parser.
+  (@gyanu2507)
+
+
 2.1.0 (2026-09-11)
 ------------------
 
