@@ -8,7 +8,10 @@ clean:
 	rm -rf dist/ cjs/ test/httpwg-tests
 
 .PHONY: test
-test: lint test/httpwg-tests/list.json dist/build
+test: lint unit-test
+
+.PHONY: unit-test
+unit-test: test/httpwg-tests/list.json dist/build
 	node --test
 
 .PHONY: test-debug
