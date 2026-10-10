@@ -7,6 +7,8 @@ ChangeLog
 * Decimals that round to a whole number, such as `1.0001`, now serialize as
   `1.0` instead of `1.`, which is invalid and was rejected by the parser.
   (@gyanu2507)
+* Fix: serialization of displaystring that encodes to byte values under 0xf,
+  they were missing the 0 padding of %0?.
 
 
 2.1.0 (2026-09-11)
