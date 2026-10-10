@@ -149,7 +149,7 @@ export function serializeDisplayString(input: DisplayString): string {
       || char <= 0x1f
       || char >= 0x7f
     ) {
-      out += '%' + char.toString(16);
+      out += '%' + char.toString(16).padStart(2, '0');
     } else {
       out += String.fromCharCode(char);
     }
