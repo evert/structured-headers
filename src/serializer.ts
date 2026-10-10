@@ -129,7 +129,8 @@ export function serializeDecimal(input: number): string {
   if (signifantDigits > 12) {
     throw new SerializeError('Fractional numbers are not allowed to have more than 12 significant digits before the decimal point');
   }
-  return out;
+  // A decimal must have at least one fractional digit.
+  return out.endsWith('.') ? out + '0' : out;
 }
 
 export function serializeString(input: string): string {

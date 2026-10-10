@@ -101,6 +101,16 @@ describe('serializer shorthands', () => {
 
   describe('serializeItem', () => {
 
+    it('should keep a fractional digit when a decimal rounds to a whole number', () => {
+
+      for (const [input, expected] of [[1.0001, '1.0'], [9.9999, '10.0'], [-0.0001, '-0.0']]) {
+        const str = serializeItem(input);
+        assert.equal(str, expected);
+        assert.deepEqual(parseItem(str), [Number(expected), new Map()]);
+      }
+
+    });
+
     it('should error when passing a type that\'s not recognized', () => {
 
       let caught = false;
