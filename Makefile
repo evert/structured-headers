@@ -5,7 +5,7 @@ build: dist/build cjs/index.cjs
 
 .PHONY: clean
 clean:
-	rm -r dist/ cjs/
+	rm -rf dist/ cjs/ test/httpwg-tests
 
 .PHONY: test
 test: lint test/httpwg-tests/list.json dist/build
