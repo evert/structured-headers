@@ -1,7 +1,7 @@
 ChangeLog
 =========
 
-2.1.1 (????-??-??)
+2.1.1 (2026-10-10)
 ------------------
 
 * Decimals that round to a whole number, such as `1.0001`, now serialize as

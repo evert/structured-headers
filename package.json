@@ -1,6 +1,6 @@
 {
   "name": "structured-headers",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Implementation of Structured Field Values for HTTP (RFC9651, RFC8941)",
   "type": "module",
   "exports": {
