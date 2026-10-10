@@ -8,7 +8,10 @@ clean:
 	rm -rf dist/ cjs/ test/httpwg-tests
 
 .PHONY: test
-test: lint test/httpwg-tests/list.json dist/build
+test: lint unit-test
+
+.PHONY: unit-test
+unit-test: test/httpwg-tests/list.json dist/build
 	node --test
 
 .PHONY: test-debug
@@ -17,11 +20,13 @@ test-debug:
 
 .PHONY: lint
 lint:
-	node_modules/.bin/eslint --quiet 'src/**/*.ts'
+	node_modules/.bin/oxlint src
+	node_modules/.bin/oxfmt --check src
 
 .PHONY: fix
 fix:
-	node_modules/.bin/eslint --quiet 'src/**/*.ts' --fix
+	node_modules/.bin/oxlint --fix src
+	node_modules/.bin/oxfmt src
 
 .PHONY: watch
 watch:

@@ -10,6 +10,7 @@ on:
 
 jobs:
   build:
+    name: Test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
@@ -17,10 +18,22 @@ jobs:
         with:
           node-version: 18
       - run: npm ci
-      - run: npm test
+      - run: make unit-test
+
+  lint:
+    name: Lint & format
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 26
+      - run: npm ci
+      - run: make lint
 
   publish-npm:
-    needs: build
+    name: Publish to npm
+    needs: [build, lint]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7

@@ -7,20 +7,16 @@
         "experimentalDecorators": true,
         "noUnusedLocals": true,
 
-        "moduleResolution": "node",
+        "moduleResolution": "bundler",
         "sourceMap": true,
+        "rootDir": "src",
         "outDir": "dist",
-        "baseUrl": ".",
-        "paths": {
-            "*": [
-                "src/types/*"
-            ]
-        },
         "lib": [
           "DOM",
           "ES2019"
         ],
-        "declaration": true
+        "declaration": true,
+        "ignoreDeprecations": "6.0"
     },
     "include": [
         "src/**/*"

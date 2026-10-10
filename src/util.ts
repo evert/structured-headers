@@ -5,32 +5,22 @@ const tokenRe = /^[a-zA-Z*][:/!#$%&'*+\-.^_`|~A-Za-z0-9]*$/;
 const keyRe = /^[a-z*][*\-_.a-z0-9]*$/;
 
 export function isAscii(str: string): boolean {
-
   return asciiRe.test(str);
-
 }
 
 export function isValidTokenStr(str: string): boolean {
-
   return tokenRe.test(str);
-
 }
 
 export function isValidKeyStr(str: string): boolean {
-
   return keyRe.test(str);
-
 }
 
-
 export function isInnerList(input: Item | InnerList): input is InnerList {
-
   return Array.isArray(input[0]);
-
 }
 
 export function arrayBufferToBase64(input: BufferSource): string {
-
   // Create a Uint8Array to read the bytes. A view may cover only part of a
   // larger buffer -- Node allocates small Buffers out of a shared pool -- so
   // it is read through its own offset and length, never its whole buffer.
@@ -49,7 +39,6 @@ export function arrayBufferToBase64(input: BufferSource): string {
 }
 
 export function base64ToArrayBuffer(b64: string): ArrayBuffer {
-
   // Decode the base64 string into a binary string
   const binaryString = atob(b64);
 
@@ -64,5 +53,4 @@ export function base64ToArrayBuffer(b64: string): ArrayBuffer {
 
   // Return the ArrayBuffer
   return bytes.buffer;
-
 }

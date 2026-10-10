@@ -5,7 +5,7 @@ import { DisplayString } from './displaystring.js';
  * Lists are arrays of zero or more members, each of which can be an Item
  * or an Inner List, both of which can be Parameterized
  */
-export type List = (InnerList|Item)[];
+export type List = (InnerList | Item)[];
 
 /**
  * An Inner List is an array of zero or more Items. Both the individual Items
@@ -29,7 +29,7 @@ export type Parameters = Map<string, BareItem>;
  * There can be zero or more members, and their keys are unique in the scope
  * of the Dictionary they occur within.
  */
-export type Dictionary = Map<string, Item|InnerList>;
+export type Dictionary = Map<string, Item | InnerList>;
 
 /**
  * Another representatation of a Dictionary.
@@ -37,7 +37,7 @@ export type Dictionary = Map<string, Item|InnerList>;
  * Serialize functions also accept an Object instead of a Map for a
  * Dictionary. Parse functions will always return the Map however.
  */
-export type DictionaryObject = Record<string, BareItem|Item|InnerList>;
+export type DictionaryObject = Record<string, BareItem | Item | InnerList>;
 
 /**
  * A standalone value: the value of an Item, or of a parameter.
