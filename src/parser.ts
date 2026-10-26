@@ -368,31 +368,13 @@ export default class Parser {
   private parseDate(): Date {
     this.expectChar('@');
     this.pos++;
-    let sign = 1;
-    let inputNumber = '';
-    if (this.lookChar() === '-') {
-      sign = -1;
-      this.pos++;
+    const start = this.pos;
+    const seconds = this.parseIntegerOrDecimal();
+    if (this.input.substring(start, this.pos).includes('.')) {
+      throw new ParseError(start, 'A date must be an integer');
     }
 
-    if (!isDigit(this.lookChar())) {
-      throw new ParseError(this.pos, 'Expected a digit (0-9)');
-    }
-
-    while (!this.eof()) {
-      const char = this.getChar();
-      if (isDigit(char)) {
-        inputNumber += char;
-      } else {
-        throw new ParseError(this.pos, 'Expected a digit (0-9), whitespace or EOL');
-      }
-    }
-
-    if (inputNumber.length > 15) {
-      throw new ParseError(this.pos, 'Exceeded max length for a date value');
-    }
-
-    return new Date(parseInt(inputNumber, 10) * sign * 1000);
+    return new Date(seconds * 1000);
   }
 
   private parseKey(): string {

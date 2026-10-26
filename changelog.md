@@ -1,6 +1,13 @@
 ChangeLog
 =========
 
+2.1.2 (????-??-??)
+------------------
+
+* Dates followed by parameters or by more list or dictionary members, such as
+  `@1659578233;a=1` or `a=@1659578233, b=2`, failed to parse. (@wleeaf)
+
+
 2.1.1 (2026-10-10)
 ------------------
 
