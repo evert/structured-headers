@@ -271,10 +271,7 @@ export default class Parser {
 
     while (!this.eof()) {
       const char = this.getChar();
-      if (
-        char.charCodeAt(0) <= 0x1f ||
-        (char.charCodeAt(0) >= 0x7f && char.charCodeAt(0) <= 0xff)
-      ) {
+      if (char.charCodeAt(0) <= 0x1f || char.charCodeAt(0) >= 0x7f) {
         throw new ParseError(
           this.pos,
           'Invalid char found in DisplayString. Did you forget to escape?',
@@ -296,6 +293,8 @@ export default class Parser {
       if (char === '"') {
         const textDecoder = new TextDecoder('utf-8', {
           fatal: true,
+          // A leading U+FEFF is part of the value, not a byte order mark.
+          ignoreBOM: true,
         });
         try {
           return new DisplayString(textDecoder.decode(new Uint8Array(result)));
